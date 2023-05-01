@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import styled, { useTheme } from "styled-components";
+import Header from "./components/Header";
+import Button from "./components/Button";
+
 
 function App() {
+
+const theme = useTheme();
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppStyled theme={theme}>
+      <Header/>
+      <div className="fetch-btns">
+        <Button name={'Liked'} icon={<i className="fa-solid fa-heart"></i>}/>
+        <Button name={'Trending'} icon={<i className="fa-solid fa-arrow-trend-up"></i>}/>
+        <Button name={'Random'} icon={<i className="fa-solid fa-shuffle"></i>}/>
+
+      </div>
+
+    </AppStyled>
+  
   );
 }
+
+
+
+const AppStyled = styled.div`
+min-height: 100vh;
+background-color: ${props => props.theme.colorBg1};
+
+.fetch-btns{
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+`
 
 export default App;
